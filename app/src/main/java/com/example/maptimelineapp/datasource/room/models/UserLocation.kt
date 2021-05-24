@@ -1,18 +1,18 @@
-package com.example.maptimelineapp.room.models
+package com.example.maptimelineapp.datasource.room.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+import java.time.OffsetDateTime
 
 @Entity
-data class UserLocation(
-    @PrimaryKey val id: Int?,
+class UserLocation(
+    @PrimaryKey(autoGenerate = true) val id: Int?,
     @ColumnInfo(name = "latitude") val latitude: Double?,
     @ColumnInfo(name = "longitude") val longitude: Double?,
     @ColumnInfo(name = "locationName") val locationName: String?,
     @ColumnInfo(name = "locationDec") val locationDesc: String?,
-    @ColumnInfo(name = "date") val date: Date?
+    @ColumnInfo(name = "date") val date: OffsetDateTime?
 ) {
 
     override fun toString(): String {
@@ -22,7 +22,7 @@ data class UserLocation(
                 ", longitude='" + longitude + '\'' +
                 ", locationName='" + locationName + '\'' +
                 ", locationDesc='" + locationDesc + '\'' +
-                ", date='" + date?.time + '\'' +
+                ", date='" + date + '\'' +
                 '}'
     }
 }
