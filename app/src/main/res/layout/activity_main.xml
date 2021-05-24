@@ -5,6 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.MainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="MissingConstraints" >
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/locationLogging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auto Location"
+            android:tooltipText="Enable auto location logging"/>
+    </androidx.appcompat.widget.Toolbar>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,25 +28,18 @@
             android:id="@+id/map_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="100dp"/>
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginBottom="78dp"/>
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:background="#80000000"
         tools:listitem="@layout/recycler_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@android:drawable/ic_input_add"
-        android:layout_margin="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

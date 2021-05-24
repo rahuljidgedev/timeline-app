@@ -35,8 +35,8 @@ class UserLocationAdapter (private val itemClickListener: OnItemClickListener): 
             itemView.setOnClickListener {
                 itemClickListener.onItemClick(locationData)
             }
-            locationName.text = locationData?.locationName
-            locationDate.text = locationData?.date?.format(DateTimeFormatter.ofPattern("dd LLL, yy HH:mm"))
+            locationName.text = locationData?.date?.format(DateTimeFormatter.ofPattern("dd LLL, yy HH:mm"))
+            locationDate.text = locationData?.locationName
         }
 
         companion object {
