@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Auto Location"
+            android:layout_marginStart="16dp"
             android:tooltipText="Enable auto location logging"/>
     </androidx.appcompat.widget.Toolbar>
     <FrameLayout

@@ -57,8 +57,9 @@ class MainActivity : AppCompatActivity(), UserLocationAdapter.OnItemClickListene
             googleMaps.uiSettings.isZoomControlsEnabled = true
             googleMaps.uiSettings.isZoomGesturesEnabled = true
             googleMaps.uiSettings.isCompassEnabled = true
-            googleMaps.setMinZoomPreference(3.0f)
-            googleMaps.setMaxZoomPreference(14.0f)
+            googleMaps.setMinZoomPreference(1.0f)
+            googleMaps.setMaxZoomPreference(18.0f)
+            googleMaps.mapType = GoogleMap.MAP_TYPE_TERRAIN
             googleMap = googleMaps
 
             googleMap.setOnMapClickListener { it ->
@@ -99,9 +100,7 @@ class MainActivity : AppCompatActivity(), UserLocationAdapter.OnItemClickListene
         locationViewModel.userLocationList.observe(this){ location ->
             location?.let {
                 adapter.submitList(location)
-                if(googleMap != null){
-                    addMarkers(location)
-                }
+                addMarkers(location)
             }
         }
 
@@ -152,11 +151,15 @@ class MainActivity : AppCompatActivity(), UserLocationAdapter.OnItemClickListene
 
     private fun addMarkers(locations: List<UserLocation>) {
         locations.forEach {
-            googleMap.addMarker(
-                MarkerOptions()
-                    .title(it.locationName)
-                    .position(LatLng(it.latitude!!, it.longitude!!))
-            )
+            try {
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .title(it.locationName)
+                        .position(LatLng(it.latitude!!, it.longitude!!))
+                )
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
         }
     }
 
